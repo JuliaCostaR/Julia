@@ -14,5 +14,5 @@
     <p>Celular: <input type="text" name="celular" size="80" value=""></p>
     <p>Email: <input type="text" name="email" size="80" value=""></p>
     <p><textarea name="obs" rows="6" cols="80"></textarea></p>
-    <p><button type="submit">Envia</button></p>
+    <p><button type="submit">Enviar</button></p>
 </form>
