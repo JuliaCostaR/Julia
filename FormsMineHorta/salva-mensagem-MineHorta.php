@@ -21,21 +21,15 @@
         include "form-fale-conosco-MineHorte.php";
         die;
     }
-	if(empty($cnpj, FILTER_VALIDATE_CNPJ)== false)
+    if(validaCNPJ($cnpj)== false)
     {
-        echo "<b>O campo CNPJ não deve ser válido.</b>";
-        include "form-fale-conosco-MineHorte.php";
-        die;
-    }
-    if(filter_var($cnpj, FILTER_VALIDATE_CNPJ)== false)
-    {
-        echo "<b>O campo CNPJ não deve ser válido.</b>";
+        echo "<b>O valor do campo CNPJ não parece ser um CNPJ.</b>";
         include "form-fale-conosco-MineHorte.php";
         die;
     }
     if(!filter_var($email, FILTER_VALIDATE_EMAIL))
     {
-        echo "<b>O campo email não parece ser um email.</b>";
+        echo "<b>O valor do campo email não parece ser um email.</b>";
         include "form-fale-conosco-MineHorte.php";
         die;
     }
