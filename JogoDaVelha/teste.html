@@ -1,0 +1,95 @@
+<html>
+	<head>
+	<meta charset="utf-8"/>
+	<title>Jogo da Velha</title>
+	<style>
+
+		.tabuleiro {
+			background-color: #ccc;
+			width: 200px;
+		}
+
+		.tabuleiro img {
+			border: 2px solid;
+		}
+	</style>
+
+	<script type="text/javascript" src="jquery-2.1.3.min.js"></script>
+
+	<script type="text/javascript">
+
+		var proxima = 0;
+		var contador = 0;
+
+		function celula(i,j)
+		{
+			var seletor = "#img" + i + j;
+			var src = $(seletor).attr('src');
+			if(src == 'x.png') {
+				return "x";
+			}
+			if(src == 'o.png') {
+				return "o";
+			}
+			return "";
+		}
+
+		function clickImagem() {
+			// O "this" é uma referência ao objeto que sofreu o evento.
+			var imagem = $(this).attr("src");
+			if(imagem == "b.png") {
+				contador++;
+				$(this).attr("src",proxima == 0 ? "o.png" : "x.png");
+//				proxima = proxima == 0 ? 1 : 0;
+				proxima = (proxima+1)%2;
+			}
+			// Verificar aqui se ganhou
+
+			for(var i=0; i<=2; i++) {
+				for(var j=0; j<=2; j++) {
+					console.log(i,j,celula(i,j));
+					// se uma linha todos sao iguais
+					// se um coluna todos sao iguais
+					// diagonal principal (i==j) todos são iguais
+					// diagonal secudaria (   ) todos sao iguais
+				}
+			}
+
+
+		}
+
+		function paginaCarregada() {
+			$(".tabuleiro img").on("click",clickImagem);
+		}
+
+		function f() {
+			console.log($('img[data-coluna=0]').attr('src'));
+			console.log($('img[lala=0]').attr('src'));
+		}
+
+	</script>
+	</head>
+	
+	<body onload="paginaCarregada()">
+		<div class="tabuleiro">
+			<div class="linha">
+				<img id="img00" src="b.png" data-linha="0" data-coluna="0"/>
+				<img id="img01" src="b.png"/>
+				<img id="img02" src="b.png" lala="0"/>
+			</div>
+			<div class="linha">
+				<img id="img10" src="b.png"/>
+				<img id="img11" src="b.png"/>
+				<img id="img12" src="b.png"/>
+			</div>
+			<div class="linha">
+				<img id="img20" src="b.png"/>
+				<img id="img21" src="b.png"/>
+				<img id="img22" src="b.png"/>
+			</div>
+		</div>
+		<button onclick="f()">Aperte-me</button>
+
+	</body>
+
+</html>
